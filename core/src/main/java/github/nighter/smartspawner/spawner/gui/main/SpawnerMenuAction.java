@@ -2,6 +2,7 @@ package github.nighter.smartspawner.spawner.gui.main;
 
 import github.nighter.smartspawner.SmartSpawner;
 import github.nighter.smartspawner.holders.SpawnerMenuHolder;
+import github.nighter.smartspawner.hooks.protections.CheckStackBlock;
 import github.nighter.smartspawner.language.LanguageManager;
 import github.nighter.smartspawner.language.MessageService;
 import github.nighter.smartspawner.nms.ParticleWrapper;
@@ -142,6 +143,11 @@ public class SpawnerMenuAction implements Listener {
                     return;
                 }
 
+                if (!CheckStackBlock.CanPlayerPlaceBlock(player, spawner.getSpawnerLocation())) {
+                    messageService.sendMessage(player, "spawner_protected");
+                    return;
+                }
+
                 // Open stacker GUI
                 spawnerStackerUI.openStackerGui(player, spawner);
                 player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1.0f, 1.0f);
@@ -150,6 +156,11 @@ public class SpawnerMenuAction implements Listener {
             // Check stacker permission
             if (!player.hasPermission("smartspawner.stack")) {
                 messageService.sendMessage(player, "no_permission");
+                return;
+            }
+
+            if (!CheckStackBlock.CanPlayerPlaceBlock(player, spawner.getSpawnerLocation())) {
+                messageService.sendMessage(player, "spawner_protected");
                 return;
             }
 
