@@ -20,6 +20,7 @@ softdepend:
   - SuperiorSkyblock2
   - Multiverse-Core
   - Worlds
+  - BlockLocker
 commands:
   smartspawner:
     description: Main command for SmartSpawner plugin

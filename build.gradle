@@ -20,7 +20,8 @@ allprojects {
         maven { name = "enginehub"; url = "https://maven.enginehub.org/repo/" }
         maven { name = "glaremasters repo"; url = "https://repo.glaremasters.me/repository/towny/" }
         maven { name = "bg-repo"; url = "https://repo.bg-software.com/repository/api/" }
-        maven { name = "codemc"; url = "https://repo.codemc.io/repository/bentoboxworld/" }
+        maven { name = "bentobox"; url = "https://repo.codemc.io/repository/bentoboxworld/" }
+        maven { name = "codemc-repo"; url = "https://repo.codemc.org/repository/maven-public/" }
     }
 }
 

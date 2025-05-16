@@ -16,6 +16,7 @@ public class CheckBreakBlock {
 
         if(player.isOp() || player.hasPermission("*")) return true;
 
+        if (SmartSpawner.hasBlockLocker && !BlockLocker.hasOwnerAccess(player, location)) return false;
         if (SmartSpawner.hasGriefPrevention && !GriefPrevention.canPlayerBreakClaimBlock(player, location)) return false;
         if (SmartSpawner.hasWorldGuard && !WorldGuard.canPlayerBreakBlockInRegion(player, location)) return false;
         if (SmartSpawner.hasLands && !Lands.canPlayerBreakClaimBlock(player, location)) return false;

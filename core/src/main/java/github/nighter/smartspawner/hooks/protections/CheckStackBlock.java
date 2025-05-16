@@ -16,6 +16,7 @@ public class CheckStackBlock {
 
         if(player.isOp() || player.hasPermission("*")) return true;
 
+        if (SmartSpawner.hasBlockLocker && !BlockLocker.hasOwnerAccess(player, location)) return false;
         if (SmartSpawner.hasGriefPrevention && !GriefPrevention.canPlayerStackClaimBlock(player, location)) return false;
         if (SmartSpawner.hasWorldGuard && !WorldGuard.canPlayerStackBlockInRegion(player, location)) return false;
         if (SmartSpawner.hasLands && !Lands.canPlayerStackClaimBlock(player, location)) return false;

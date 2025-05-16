@@ -138,6 +138,7 @@ public class SmartSpawner extends JavaPlugin implements SmartSpawnerPlugin {
     public static boolean hasSuperiorSkyblock2 = false;
     public static boolean hasBentoBox = false;
     public static boolean hasSimpleClaimSystem = false;
+    public static boolean hasBlockLocker = false;
 
     // API implementation
     private SmartSpawnerAPIImpl apiImpl;
@@ -383,6 +384,16 @@ public class SmartSpawner extends JavaPlugin implements SmartSpawnerPlugin {
             SimpleClaimSystemAPI_Provider.initialize((SimpleClaimSystem) simpleClaimPlugin);
             return simpleClaimPlugin != null;
         }, true);
+
+        hasBlockLocker = checkPlugin("BlockLocker", () -> {
+            try {
+                Class.forName("nl.rutgerkok.blocklocker.BlockLockerAPIv2");
+                return nl.rutgerkok.blocklocker.BlockLockerAPIv2.getPlugin() != null;
+            } catch (ClassNotFoundException e) {
+                return false;
+            }
+        }, true);
+
     }
 
     private boolean checkPlugin(String pluginName, PluginCheck checker, boolean logSuccess) {

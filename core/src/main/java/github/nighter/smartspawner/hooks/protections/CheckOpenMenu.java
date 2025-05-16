@@ -17,6 +17,7 @@ public class CheckOpenMenu {
 
         if(player.isOp() || player.hasPermission("*")) return true;
 
+        if (SmartSpawner.hasBlockLocker && !BlockLocker.hasAccess(player, location)) return false;
         if (SmartSpawner.hasGriefPrevention && !GriefPrevention.canPlayerOpenMenuOnClaim(player, location)) return false;
         if (SmartSpawner.hasWorldGuard && !WorldGuard.canPlayerInteractInRegion(player, location)) return false;
         if (SmartSpawner.hasLands && !Lands.CanPlayerInteractContainer(player, location)) return false;
