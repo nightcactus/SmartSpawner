@@ -2,6 +2,7 @@ package github.nighter.smartspawner.spawner.gui.main;
 
 import github.nighter.smartspawner.SmartSpawner;
 import github.nighter.smartspawner.holders.SpawnerMenuHolder;
+import github.nighter.smartspawner.hooks.protections.CheckBreakBlock;
 import github.nighter.smartspawner.hooks.protections.CheckStackBlock;
 import github.nighter.smartspawner.language.LanguageManager;
 import github.nighter.smartspawner.language.MessageService;
@@ -148,6 +149,11 @@ public class SpawnerMenuAction implements Listener {
                     return;
                 }
 
+                if (!CheckBreakBlock.hasProtectedBlockOwnerAccess(player, spawner.getSpawnerLocation())) {
+                    messageService.sendMessage(player, "spawner_protected");
+                    return;
+                }
+
                 // Open stacker GUI
                 spawnerStackerUI.openStackerGui(player, spawner);
                 player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1.0f, 1.0f);
@@ -160,6 +166,11 @@ public class SpawnerMenuAction implements Listener {
             }
 
             if (!CheckStackBlock.CanPlayerPlaceBlock(player, spawner.getSpawnerLocation())) {
+                messageService.sendMessage(player, "spawner_protected");
+                return;
+            }
+
+            if (!CheckBreakBlock.hasProtectedBlockOwnerAccess(player, spawner.getSpawnerLocation())) {
                 messageService.sendMessage(player, "spawner_protected");
                 return;
             }

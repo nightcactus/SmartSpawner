@@ -2,6 +2,8 @@ package github.nighter.smartspawner.spawner.interactions.stack;
 
 import github.nighter.smartspawner.SmartSpawner;
 import github.nighter.smartspawner.api.events.SpawnerStackEvent;
+import github.nighter.smartspawner.hooks.protections.CheckBreakBlock;
+import github.nighter.smartspawner.hooks.protections.CheckOpenMenu;
 import github.nighter.smartspawner.hooks.protections.CheckStackBlock;
 import github.nighter.smartspawner.language.MessageService;
 import github.nighter.smartspawner.nms.ParticleWrapper;
@@ -143,6 +145,11 @@ public class SpawnerStackHandler {
 
     private boolean hasStackPermissions(Player player, Location location) {
         if (!CheckStackBlock.CanPlayerPlaceBlock(player, location)) {
+            messageService.sendMessage(player, "spawner_protected");
+            return false;
+        }
+
+        if (!CheckBreakBlock.hasProtectedBlockOwnerAccess(player, location)) {
             messageService.sendMessage(player, "spawner_protected");
             return false;
         }

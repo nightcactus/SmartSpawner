@@ -68,6 +68,12 @@ public class SpawnerBreakListener implements Listener {
             return;
         }
 
+        // Protection plugin integration
+        if (!CheckBreakBlock.hasProtectedBlockOwnerAccess(player, location)) {
+            event.setCancelled(true);
+            return;
+        }
+
         // Feature toggle check
         if (!plugin.getConfig().getBoolean("spawner_break.enabled", true)) {
             event.setCancelled(true);

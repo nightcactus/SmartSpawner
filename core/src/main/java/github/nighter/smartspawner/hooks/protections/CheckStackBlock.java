@@ -3,9 +3,6 @@ package github.nighter.smartspawner.hooks.protections;
 import github.nighter.smartspawner.SmartSpawner;
 import github.nighter.smartspawner.hooks.protections.api.*;
 
-import java.util.UUID;
-
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +13,6 @@ public class CheckStackBlock {
 
         if(player.isOp() || player.hasPermission("*")) return true;
 
-        if (SmartSpawner.hasBlockLocker && !BlockLocker.hasOwnerAccess(player, location)) return false;
         if (SmartSpawner.hasGriefPrevention && !GriefPrevention.canPlayerStackClaimBlock(player, location)) return false;
         if (SmartSpawner.hasWorldGuard && !WorldGuard.canPlayerStackBlockInRegion(player, location)) return false;
         if (SmartSpawner.hasLands && !Lands.canPlayerStackClaimBlock(player, location)) return false;
