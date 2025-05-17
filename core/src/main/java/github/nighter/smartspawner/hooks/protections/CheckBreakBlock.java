@@ -16,7 +16,7 @@ public class CheckBreakBlock {
         if (SmartSpawner.hasGriefPrevention && !GriefPrevention.canPlayerBreakClaimBlock(player, location)) return false;
         if (SmartSpawner.hasWorldGuard && !WorldGuard.canPlayerBreakBlockInRegion(player, location)) return false;
         if (SmartSpawner.hasLands && !Lands.canPlayerBreakClaimBlock(player, location)) return false;
-        if (SmartSpawner.hasTowny && !Towny.canPlayerInteractSpawner(player, location)) return false;
+        if (SmartSpawner.hasTowny && !Towny.canPlayerBreakSpawner(player, location)) return false;
         if (SmartSpawner.hasSimpleClaimSystem && !SimpleClaimSystem.canPlayerBreakClaimBlock(player, location)) return false;
         return true;
     }
