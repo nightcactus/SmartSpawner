@@ -15,7 +15,8 @@ public class Towny {
 
     public static boolean canPlayerBreakSpawner(@NotNull Player player, @NotNull Location location) {
         return PlayerCacheUtil.getCachePermission(player,location, Material.SPAWNER, TownyPermission.ActionType.BUILD) &&
-                PlayerCacheUtil.getCachePermission(player,location, Material.SPAWNER, TownyPermission.ActionType.DESTROY);
+                PlayerCacheUtil.getCachePermission(player,location, Material.SPAWNER, TownyPermission.ActionType.DESTROY) &&
+                PlayerCacheUtil.getCachePermission(player,location, Material.SPAWNER, TownyPermission.ActionType.SWITCH);
     }
 
 }
